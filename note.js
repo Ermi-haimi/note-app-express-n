@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv"
 import { connectDB } from "./configurations/db.js";
+import { errorHandler } from "./middleware/errMiddleware.js";
+import  noteRoute from "./routes/noteRoute.js"
 
 dotenv.config();
 
@@ -14,7 +16,12 @@ app.get('/', (req,res) => {
 })
 
 
+app.use("/notes", noteRoute)
 
-app.listen(3000, () => {
+app.use(errorHandler)
+
+
+
+app.listen(port, () => {
     console.log('the app is running on port 3000')
 })
