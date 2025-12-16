@@ -18,7 +18,7 @@ export const createNote = async(req, res, next)=>{
     }
 }
 
-export const updateNote = async (req, res, async)=>{
+export const updateNote = async (req, res, next)=>{
     try{
         const note = await noteModel.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
